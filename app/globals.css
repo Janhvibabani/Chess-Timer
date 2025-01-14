@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #ffffe0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/TANKINDRED-Display.ttf') format('truetype');
+}
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Ensure consistent button styles */
+button {
+  outline: none; /* Remove default outline */
+}
+
+/* Custom styles for the dropdown button */
+.dropdown-button {
+  transition: all 0.2s ease; /* Smooth transition */
+}
+
+/* Prevent shifting on focus */
+.dropdown-button:focus {
+  border: 2px solid #647C90; /* Maintain border on focus */
+  box-shadow: none; /* Remove any default box-shadow */
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Consistent padding */
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Hover effect */
+}
