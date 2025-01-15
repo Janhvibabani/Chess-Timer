@@ -150,7 +150,8 @@ function HorizontalLayout() {
                 transform: 'rotate(90deg)',
                 transformOrigin: 'center',
                 width: 'fit-content',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                zIndex: 10
               }}
               onClick={() => handlePlayerSwitch(1)}
               disabled={!isPlayer1Turn || isPaused}
@@ -209,7 +210,8 @@ function HorizontalLayout() {
                 transform: 'rotate(-90deg)',
                 transformOrigin: 'center',
                 width: 'fit-content',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                zIndex: 10
               }}
               onClick={() => handlePlayerSwitch(2)}
               disabled={isPlayer1Turn || isPaused}
