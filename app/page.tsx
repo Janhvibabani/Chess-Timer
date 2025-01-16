@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { useState } from "react";
 import "./globals.css";
 import CustomDropdown from './components/CustomDropdown';
