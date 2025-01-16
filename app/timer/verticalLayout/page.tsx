@@ -127,7 +127,7 @@ function VerticalLayout() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#1a1a1a]">
+    <div className="min-h-full flex items-center justify-center bg-[#1a1a1a]">
       <div className="w-[350px] h-[700px] bg-white relative">
         {/* Exit Button */}
         <button 

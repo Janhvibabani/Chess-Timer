@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF] flex flex-col items-center justify-start pt-2 p-15 ml--12">
+    <div className="min-h-full bg-[#FFFFFF] flex flex-col items-center justify-start pt-2 p-15 ml--12">
       <div className="flex flex-col items-center gap-2 w-full max-w-md mx-8">
         <div className="flex items-center justify-left -space-x-20 ml-8">
             <h1 className="text-[#647C90] text-7xl mb-8 flex flex-col gap-0 font-['CustomFont'] z-10">
