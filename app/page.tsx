@@ -101,8 +101,6 @@ export default function Home() {
             <CustomDropdown layout={layout} setLayout={setLayout} />
           </div>
         </div>
-        <div></div>
-        <br></br>
         <button 
           onClick={handleStart}
           className="relative bg-white text-[#647C90] text-2xl font-['CustomFont'] font-bold py-3 px-12 rounded-[50%] border-2 border-[#647C90]">

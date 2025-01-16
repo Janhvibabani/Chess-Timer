@@ -36,14 +36,14 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ layout, setLayout }) =>
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="dropdown-button text-black text-2xl text-center font-sans bg-[#FFFBE6] border-b-2 border-[#647C90] focus:outline-none px-4 py-1 cursor-pointer flex items-center"
+        className="dropdown-button text-black text-2xl text-center font-sans bg-[#FFFBE6] border-b-2 border-[#647C90] focus:outline-none px-4 py-1 cursor-pointer flex items-center z-10"
         onClick={toggleDropdown}
       >
         {layout === 'horizontal' ? 'Horizontal' : 'Vertical'}
         <ChevronDown size={20} className="ml-2" />
       </button>
       {isOpen && (
-        <div className="absolute bg-white border border-[#647C90] mt-1 rounded shadow-lg">
+        <div className="absolute bg-white border border-[#647C90] mt-1 rounded shadow-lg z-10">
           <div onClick={() => handleOptionClick('horizontal')} className="dropdown-item">
             <Columns2 size={20} className="mr-2" /> Horizontal
           </div>
