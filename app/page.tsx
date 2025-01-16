@@ -12,6 +12,7 @@ export default function Home() {
   const [selectedTheme, setSelectedTheme] = useState("classic");
   const [duration, setDuration] = useState("5");
   const [layout, setLayout] = useState("horizontal");
+  const [increment, setIncrement] = useState("0");
 
   const themes = [
     { id: "classic", name: "Classic", colors: ["#FFFFFF", "#000000"] },
@@ -25,6 +26,7 @@ export default function Home() {
       player2,
       theme: selectedTheme,
       duration: parseInt(duration),
+      increment: parseInt(increment),
       layout
     };
     
@@ -97,10 +99,24 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center">
+            <p className="text-black text-2xl text-center font-['CustomFont'] mb-2">INCREMENT</p>
+            <input
+              type="number"
+              min="0"
+              value={increment}
+              onChange={(e) => setIncrement(e.target.value)}
+              className="text-black text-2xl text-center font-['CustomFont'] bg-transparent border-b-2 border-[#647C90] focus:outline-none w-20"
+            />
+          </div>
+          
+          <div className="col-span-2 flex flex-col items-center">
             <p className="text-black text-2xl text-center font-['CustomFont'] mb-2">LAYOUT</p>
             <CustomDropdown layout={layout} setLayout={setLayout} />
           </div>
+
+          
         </div>
+
         <button 
           onClick={handleStart}
           className="relative bg-white text-[#647C90] text-2xl font-['CustomFont'] font-bold py-3 px-12 rounded-[50%] border-2 border-[#647C90]">

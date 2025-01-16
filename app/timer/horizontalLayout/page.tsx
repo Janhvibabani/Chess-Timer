@@ -10,6 +10,7 @@ interface TimerSettings {
   player2: string;
   theme: string;
   duration: number;
+  increment: number;
   layout: string;
 }
 
@@ -114,6 +115,11 @@ function HorizontalLayout() {
 
   const handlePlayerSwitch = (playerNumber: 1 | 2) => {
     if ((playerNumber === 1 && isPlayer1Turn) || (playerNumber === 2 && !isPlayer1Turn)) {
+      if (playerNumber === 1) {
+        setPlayer1Time(prev => prev + settings!.increment);
+      } else {
+        setPlayer2Time(prev => prev + settings!.increment);
+      }
       setIsPlayer1Turn(!isPlayer1Turn);
     }
   };
