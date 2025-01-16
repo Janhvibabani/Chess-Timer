@@ -27,7 +27,7 @@ body {
 
 @font-face {
   font-family: 'CustomFont';
-  src: url('/fonts/TANKINDRED-Display.ttf') format('truetype');
+  src: url('/fonts/Poppins-ExtraBold.ttf') format('truetype');
 }
 
 html, body {

@@ -132,7 +132,7 @@ function HorizontalLayout() {
         {/* Exit Button */}
         <button 
           className="absolute left-4 top-4 p-2 rounded-full flex items-center justify-center z-10" 
-          style={{ backgroundColor: colors[0], color: colors[1]}}
+          style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1], color: isPlayer1Turn ? colors[1] : colors[0]}}
           onClick={handleExit}
         >
           <X size={24} />
@@ -141,27 +141,12 @@ function HorizontalLayout() {
         <div className="grid grid-cols-[1fr,0px,1fr] h-full">
           {/* Player 1 Section (Left) */}
           <div className="flex flex-row items-center h-full relative" 
-            style={{ backgroundColor: colors[1] }}>
-            <button 
-              className="rounded-full px-4 py-1 md:px-6 absolute left-1 md:left-2" 
-              style={{ 
-                backgroundColor: colors[0], 
-                color: colors[1],
-                transform: 'rotate(90deg)',
-                transformOrigin: 'center',
-                width: 'fit-content',
-                fontSize: '0.875rem',
-                zIndex: 10
-              }}
-              onClick={() => handlePlayerSwitch(1)}
-              disabled={!isPlayer1Turn || isPaused}
-            >
-              stop
-            </button>
+            style={{ backgroundColor: isPlayer1Turn ? colors[1] : colors[0] }}
+            onClick={() => isPlayer1Turn && !isPaused && handlePlayerSwitch(1)}>
             <div className="flex items-center justify-center w-full relative">
               <div className="text-3xl md:text-6xl font-bold" 
                 style={{ 
-                  color: colors[0], 
+                  color: isPlayer1Turn ? colors[0] : colors[1], 
                   transform: 'rotate(90deg)',
                   width: 'max-content'
                 }}>
@@ -169,11 +154,11 @@ function HorizontalLayout() {
               </div>
               <div className="text-base md:text-xl font-bold absolute -right-0" 
                 style={{ 
-                  color: colors[0], 
+                  color: isPlayer1Turn ? colors[0] : colors[1], 
                   transform: 'rotate(90deg)',
                   width: 'max-content'
                 }}>
-                PLAYER 1
+                {settings.player1}
               </div>
             </div>
           </div>
@@ -183,11 +168,12 @@ function HorizontalLayout() {
 
           {/* Player 2 Section (Right) */}
           <div className="flex flex-row items-center justify-end h-full relative" 
-            style={{ backgroundColor: colors[0] }}>
+            style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1] }}
+            onClick={() => !isPlayer1Turn && !isPaused && handlePlayerSwitch(2)}>
             <div className="flex items-center justify-center w-full relative">
               <div className="text-3xl md:text-6xl font-bold" 
                 style={{ 
-                  color: colors[1], 
+                  color: isPlayer1Turn ? colors[1] : colors[0], 
                   transform: 'rotate(-90deg)',
                   width: 'max-content'
                 }}>
@@ -195,29 +181,13 @@ function HorizontalLayout() {
               </div>
               <div className="text-base md:text-xl font-bold absolute -left-0" 
                 style={{ 
-                  color: colors[1], 
+                  color: isPlayer1Turn ? colors[1] : colors[0], 
                   transform: 'rotate(-90deg)',
                   width: 'max-content'
                 }}>
-                PLAYER 2
+                {settings.player2}
               </div>
             </div>
-            <button 
-              className="rounded-full px-4 py-1 md:px-6 absolute right-1 md:right-2" 
-              style={{ 
-                backgroundColor: colors[1], 
-                color: colors[0],
-                transform: 'rotate(-90deg)',
-                transformOrigin: 'center',
-                width: 'fit-content',
-                fontSize: '0.875rem',
-                zIndex: 10
-              }}
-              onClick={() => handlePlayerSwitch(2)}
-              disabled={isPlayer1Turn || isPaused}
-            >
-              stop
-            </button>
           </div>
         </div>
 
@@ -225,8 +195,8 @@ function HorizontalLayout() {
         <button 
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-2 md:p-4 rounded-full flex items-center justify-center" 
           style={{ 
-            backgroundColor: colors[1], 
-            color: colors[0],
+            backgroundColor: isPlayer1Turn ? colors[1] : colors[0], 
+            color: isPlayer1Turn ? colors[0] : colors[1],
 
         }}
           onClick={handlePausePlay}

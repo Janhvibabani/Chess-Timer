@@ -132,46 +132,38 @@ function VerticalLayout() {
         {/* Exit Button */}
         <button 
           className="absolute left-4 top-4 p-2 rounded-full flex items-center justify-center z-10" 
-          style={{ backgroundColor: colors[1], color: colors[0]}}
+          style={{ backgroundColor: isPlayer1Turn ? colors[1] : colors[0], color: isPlayer1Turn ? colors[0] : colors[1]}}
           onClick={handleExit}
         >
           <X size={24} />
         </button>
 
         <div className={`grid grid-rows-[1fr,0px,1fr] h-full`}>
-          {/* Player 2 Section */}
-          <div className="flex flex-col items-center justify-between py-8" style={{ backgroundColor: colors[0] }}>
-            <button 
-              className="rounded-full bg-red-600 text-white px-6 py-1" 
-              style={{ backgroundColor: colors[1], color: colors[0]}}
-              onClick={() => handlePlayerSwitch(2)}
-              disabled={isPlayer1Turn || isPaused}
-            >
-              stop
-            </button>
-            <div className="w-48 h-48 rounded-full flex items-center justify-center" style={{ backgroundColor: colors[1] }}>
-              <span className="text-4xl font-bold" style={{ color: colors[0] }}>{formatTime(player2Time)}</span>
+          {/* Player 2 Section - Make entire section clickable */}
+          <div 
+            className="flex flex-col items-center justify-between py-8 cursor-pointer" 
+            style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1] }}
+            onClick={() => !isPlayer1Turn && !isPaused && handlePlayerSwitch(2)}
+          >
+            <div className="w-48 h-48 rounded-full flex items-center justify-center" style={{ backgroundColor: isPlayer1Turn ? colors[1] : colors[0] }}>
+              <span className="text-4xl font-bold" style={{ color: isPlayer1Turn ? colors[0] : colors[1], transform: 'rotate(-180deg)'}}>{formatTime(player2Time)}</span>
             </div>
-            <div className="text-2xl font-bold" style={{ color: colors[1] }}>{settings.player2}</div>
+            <div className="text-2xl font-bold" style={{ color: isPlayer1Turn ? colors[1] : colors[0] , transform: 'rotate(-180deg)'}}>{settings.player2}</div>
           </div>
 
           {/* Empty div with 0 height */}
           <div></div>
 
-          {/* Player 1 Section */}
-          <div className="flex flex-col items-center justify-between py-8" style={{ backgroundColor: colors[1] }}>
-            <div className="text-2xl font-bold" style={{ color: colors[0] }}>{settings.player1}</div>
-            <div className="w-48 h-48 rounded-full flex items-center justify-center" style={{ backgroundColor: colors[0] }}>
-              <span className="text-4xl font-bold" style={{ color: colors[1] }}>{formatTime(player1Time)}</span>
+          {/* Player 1 Section - Make entire section clickable */}
+          <div 
+            className="flex flex-col items-center justify-between py-8 cursor-pointer" 
+            style={{ backgroundColor: isPlayer1Turn ? colors[1] : colors[0] }}
+            onClick={() => isPlayer1Turn && !isPaused && handlePlayerSwitch(1)}
+          >
+            <div className="text-2xl font-bold" style={{ color: isPlayer1Turn ? colors[0] : colors[1] }}>{settings.player1}</div>
+            <div className="w-48 h-48 rounded-full flex items-center justify-center" style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1] }}>
+              <span className="text-4xl font-bold" style={{ color: isPlayer1Turn ? colors[1] : colors[0]}}>{formatTime(player1Time)}</span>
             </div>
-            <button 
-              className="rounded-full px-6 py-1" 
-              style={{ backgroundColor: colors[0], color: colors[1]}}
-              onClick={() => handlePlayerSwitch(1)}
-              disabled={!isPlayer1Turn || isPaused}
-            >
-              stop
-            </button>
           </div>
         </div>
 

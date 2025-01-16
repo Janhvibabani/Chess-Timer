@@ -37,38 +37,37 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFBE6] flex flex-col items-center justify-start pt-8 p-7 ml-4">
+    <div className="min-h-screen bg-[#FFFFFF] flex flex-col items-center justify-start pt-20 p-15 ml--12">
       <div className="flex flex-col items-center gap-2 w-full max-w-md mx-8">
-          <div className="flex items-center justify-center -space-x-8 ml-8">
-            <h1 className="text-[#647C90] text-5xl mb-4 tracking-wider flex flex-col gap-1 font-['CustomFont']">
+        <div className="flex items-center justify-left -space-x-20 ml-8">
+            <h1 className="text-[#647C90] text-7xl mb-8 flex flex-col gap-0 font-['CustomFont'] z-10">
               <span>CHESS</span>
               <span>TIMER</span>
             </h1>
-            <Image 
-              src="/images/chessPieces.png"
-              alt="Chess Piece"
-              width={170}
-              height={150}
-              className="-ml-16"
-            />
+            <img 
+            src="/images/chesso.png" 
+            alt="Chess board and pieces" 
+            className="w-100 h-auto ml-10"
+          />
         </div>
+        
 
         <div className="grid grid-cols-2 gap-6 w-full mb-12">
           <input
             type="text"
             value={player1}
             onChange={(e) => setPlayer1(e.target.value)}
-            className="text-black text-2xl text-center font-sans bg-transparent border-b-2 border-[#647C90] focus:outline-none"
+            className="text-black text-2xl text-center font-['CustomFont'] bg-transparent border-b-2 border-[#647C90] focus:outline-none"
           />
           <input
             type="text"
             value={player2}
             onChange={(e) => setPlayer2(e.target.value)}
-            className="text-black text-2xl text-center font-sans bg-transparent border-b-2 border-[#647C90] focus:outline-none"
+            className="text-black text-2xl text-center font-['CustomFont'] bg-transparent border-b-2 border-[#647C90] focus:outline-none"
           />
           
           <div className="col-span-2 flex flex-col items-center gap-4">
-            <p className="text-black text-2xl text-center font-sans">THEME</p>
+            <p className="text-black text-2xl text-center font-['CustomFont']">THEME</p>
             <div className="flex gap-4">
               {themes.map((theme) => (
                 <button
@@ -88,27 +87,28 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center">
-            <p className="text-black text-2xl text-center font-sans mb-2">DURATION</p>
+            <p className="text-black text-2xl text-center font-['CustomFont'] mb-2">DURATION</p>
             <input
               type="number"
               min="1"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="text-black text-2xl text-center font-sans bg-transparent border-b-2 border-[#647C90] focus:outline-none w-20"
+              className="text-black text-2xl text-center font-['CustomFont'] bg-transparent border-b-2 border-[#647C90] focus:outline-none w-20"
             />
           </div>
 
           <div className="flex flex-col items-center">
-            <p className="text-black text-2xl text-center font-sans mb-2">LAYOUT</p>
+            <p className="text-black text-2xl text-center font-['CustomFont'] mb-2">LAYOUT</p>
             <CustomDropdown layout={layout} setLayout={setLayout} />
           </div>
         </div>
-
+        <div></div>
+        <br></br>
         <button 
           onClick={handleStart}
-          className="bg-[#647C90] text-white rounded-full px-16 py-4 text-2xl font-sans hover:bg-[#4E6275] transition-colors"
-        >
-          START
+          className="relative bg-white text-[#647C90] text-2xl font-['CustomFont'] font-bold py-3 px-12 rounded-[50%] border-2 border-[#647C90]">
+          Start
+          <span className="absolute text-yellow-400 text-5xl -top-3 -left-3">✨</span>
         </button>
       </div>
     </div>
