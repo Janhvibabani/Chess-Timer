@@ -47,8 +47,8 @@ function HorizontalLayout() {
   // Initialize timers when settings are loaded
   useEffect(() => {
     if (settings) {
-      setPlayer1Time(settings.duration * 60);
-      setPlayer2Time(settings.duration * 60);
+      setPlayer1Time(settings.duration * 60 * 1000);
+      setPlayer2Time(settings.duration * 60 * 1000);
       setGameStarted(true);
     }
   }, [settings]);
@@ -61,26 +61,26 @@ function HorizontalLayout() {
       interval = setInterval(() => {
         if (isPlayer1Turn) {
           setPlayer1Time(prev => {
-            if (prev <= 1) {
+            if (prev <= 100) {
               clearInterval(interval);
               playTimeoutSound();
               setIsPaused(true);
               return 0;
             }
-            return prev - 1;
+            return prev - 100;
           });
         } else {
           setPlayer2Time(prev => {
-            if (prev <= 1) {
+            if (prev <= 100) {
               clearInterval(interval);
               playTimeoutSound();
               setIsPaused(true);
               return 0;
             }
-            return prev - 1;
+            return prev - 100;
           });
         }
-      }, 1000);
+      }, 100);
     }
 
     return () => clearInterval(interval);
@@ -107,18 +107,19 @@ function HorizontalLayout() {
 
   const colors = themeColors[settings.theme as keyof typeof themeColors];
 
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+  const formatTime = (milliseconds: number) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
 
   const handlePlayerSwitch = (playerNumber: 1 | 2) => {
     if ((playerNumber === 1 && isPlayer1Turn) || (playerNumber === 2 && !isPlayer1Turn)) {
       if (playerNumber === 1) {
-        setPlayer1Time(prev => prev + settings!.increment);
+        setPlayer1Time(prev => prev + settings!.increment * 1000);
       } else {
-        setPlayer2Time(prev => prev + settings!.increment);
+        setPlayer2Time(prev => prev + settings!.increment * 1000);
       }
       setIsPlayer1Turn(!isPlayer1Turn);
     }
