@@ -134,15 +134,15 @@ function HorizontalLayout() {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center bg-[#1a1a1a]">
-      <div className="w-[350px] h-[700px] bg-white relative">
+    <div className="fixed inset-0 flex items-center justify-center bg-[#1a1a1a]">
+      <div className="w-full h-[100dvh] md:w-[700px] md:h-[350px] bg-white relative">
         {/* Exit Button */}
         <button 
           className="absolute left-4 top-4 p-2 rounded-full flex items-center justify-center z-10" 
           style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1], color: isPlayer1Turn ? colors[1] : colors[0]}}
           onClick={handleExit}
         >
-          <X size={24} />
+          <X size={20} className="md:w-6 md:h-6" />
         </button>
 
         <div className="grid grid-cols-[1fr,0px,1fr] h-full">

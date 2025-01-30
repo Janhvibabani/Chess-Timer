@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: 'CustomFont';
   src: url('/fonts/Poppins-ExtraBold.ttf') format('truetype');
@@ -11,11 +10,18 @@
 html, body {
   overflow: hidden;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+}
+
+#__next {
+  background-color: #1a1a1a;
 }
 
 /* Ensure consistent button styles */
 button {
-  outline: none; /* Remove default outline */
+  outline: none;
 }
 
 /* Custom styles for the dropdown button */
