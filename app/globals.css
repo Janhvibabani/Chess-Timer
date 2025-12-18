@@ -19,30 +19,28 @@ html, body {
   background-color: #1a1a1a;
 }
 
-/* Ensure consistent button styles */
 button {
   outline: none;
 }
 
-/* Custom styles for the dropdown button */
 .dropdown-button {
-  transition: all 0.2s ease; /* Smooth transition */
+  transition: all 0.2s ease; 
 }
 
 /* Prevent shifting on focus */
 .dropdown-button:focus {
-  border: 2px solid #647C90; /* Maintain border on focus */
-  box-shadow: none; /* Remove any default box-shadow */
+  border: 2px solid #647C90;
+  box-shadow: none;
 }
 
 /* Dropdown item styles */
 .dropdown-item {
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem; /* Consistent padding */
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
 .dropdown-item:hover {
-  background-color: #f0f0f0; /* Hover effect */
+  background-color: #f0f0f0;
 }

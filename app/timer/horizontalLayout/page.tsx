@@ -150,21 +150,22 @@ function HorizontalLayout() {
           <div className="flex flex-row items-center h-full relative" 
             style={{ backgroundColor: isPlayer1Turn ? colors[1] : colors[0] }}
             onClick={() => isPlayer1Turn && !isPaused && handlePlayerSwitch(1)}>
-            <div className="flex items-center justify-center w-full relative">
-              <div className="text-3xl md:text-6xl font-bold" 
-                style={{ 
-                  color: isPlayer1Turn ? colors[0] : colors[1], 
-                  transform: 'rotate(90deg)',
-                  width: 'max-content'
+            <div className="flex flex-col items-center justify-center w-full gap-2">
+              <div className="text-3xl md:text-6xl font-bold"
+                style={{
+                  color: isPlayer1Turn ? colors[0] : colors[1],
+                  transform: 'rotate(90deg)'
                 }}>
                 {formatTime(player1Time)}
               </div>
-              <div className="text-base md:text-xl font-bold absolute -right-0" 
-                style={{ 
-                  color: isPlayer1Turn ? colors[0] : colors[1], 
-                  transform: 'rotate(90deg)',
-                  width: 'max-content'
-                }}>
+              <div className="text-base md:text-xl font-bold absolute -right-0 text-center" style={{
+                color: isPlayer1Turn ? colors[0] : colors[1],
+                transform: 'rotate(90deg)',
+                width: '120px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap'
+              }}>
                 {settings.player1}
               </div>
             </div>
@@ -177,21 +178,22 @@ function HorizontalLayout() {
           <div className="flex flex-row items-center justify-end h-full relative" 
             style={{ backgroundColor: isPlayer1Turn ? colors[0] : colors[1] }}
             onClick={() => !isPlayer1Turn && !isPaused && handlePlayerSwitch(2)}>
-            <div className="flex items-center justify-center w-full relative">
-              <div className="text-3xl md:text-6xl font-bold" 
-                style={{ 
-                  color: isPlayer1Turn ? colors[1] : colors[0], 
-                  transform: 'rotate(-90deg)',
-                  width: 'max-content'
+            <div className="flex flex-col items-center justify-center w-full gap-2">
+              <div className="text-3xl md:text-6xl font-bold"
+                style={{
+                  color: isPlayer1Turn ? colors[1] : colors[0],
+                  transform: 'rotate(-90deg)'
                 }}>
                 {formatTime(player2Time)}
               </div>
-              <div className="text-base md:text-xl font-bold absolute -left-0" 
-                style={{ 
-                  color: isPlayer1Turn ? colors[1] : colors[0], 
-                  transform: 'rotate(-90deg)',
-                  width: 'max-content'
-                }}>
+              <div className="text-base md:text-xl font-bold absolute -left-0 text-center" style={{
+                color: isPlayer1Turn ? colors[1] : colors[0],
+                transform: 'rotate(-90deg)',
+                width: '120px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap'
+              }}>
                 {settings.player2}
               </div>
             </div>
