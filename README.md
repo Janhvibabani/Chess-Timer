@@ -31,7 +31,7 @@ A minimal, customizable online chess clock built with **Next.js**, **React**, **
    git clone https://github.com/Janhvibabani/Chess-Timer.git
    ```
 
-2. Navigate to the project folder  
+2. Navigate to the project directory  
 
    ```bash
    cd Chess-Timer
@@ -43,33 +43,23 @@ A minimal, customizable online chess clock built with **Next.js**, **React**, **
    npm install
    ```
 
-   *(or `pnpm install` / `yarn install`)*  
-
-4. Run the development server  
-
-   ```bash
-   npm run dev
-   ```
-
-   The application will be available at `http://localhost:3000`.
+   *(or `pnpm install` / `yarn install` if you prefer a different package manager)*  
 
 ## Configuration
 
-The timer does not require additional configuration files. All settings (players, duration, increment, theme, layout) are selected through the web UI before starting a game.
-
-If you need to customize Tailwind or Next.js settings, edit the following files:
-
-- `tailwind.config.js` – Tailwind configuration  
-- `next.config.js` – Next.js configuration  
+No additional configuration or environment variables are required. The application runs with the default settings out of the box.
 
 ## Usage
 
-1. Open `http://localhost:3000` in a browser.  
-2. Enter player names, choose a theme, set the total time and increment, and select a layout (horizontal or vertical).  
-3. Click **Start** – the app navigates to the timer page and begins counting down.  
-4. Tap a player's clock to switch turns. The timer stops automatically when a player's time reaches zero.
+Start the development server:
 
-For production deployment, build the app and serve it with a Node.js server:
+```bash
+npm run dev
+```
+
+Open your browser and visit `http://localhost:3000` to access the chess timer.
+
+You can also build and run the production version:
 
 ```bash
 npm run build
@@ -78,78 +68,56 @@ npm start
 
 ## Project Structure
 
-```
-Chess-Timer/
-├─ app/
-│  ├─ components/          # Reusable UI components (e.g., CustomDropdown)
-│  ├─ layout.tsx           # Root layout with metadata
-│  ├─ page.tsx             # Home page (settings UI)
-│  └─ timer/
-│     ├─ horizontalLayout/
-│     │  └─ page.tsx       # Horizontal timer implementation
-│     └─ verticalLayout/
-│        └─ page.tsx       # Vertical timer implementation
-├─ public/
-│  ├─ chess-clock.svg      # Favicon
-│  └─ og.png               # Open Graph image
-├─ styles/
-│  └─ globals.css          # Tailwind base and custom styles
-├─ tsconfig.json
-├─ package.json
-└─ README.md
-```
+- `app/` – Main application code (pages, components, layout)  
+  - `components/` – Reusable UI components (e.g., `CustomDropdown.tsx`)  
+  - `page.tsx` – Home page containing the timer setup UI  
+  - `layout.tsx` – Root layout for the Next.js app  
+- `public/` – Static assets (fonts, images)  
+- `styles/` or `globals.css` – Global Tailwind CSS configuration  
+- `package.json` – Project metadata and scripts  
+- `tsconfig.json` – TypeScript compiler options  
 
 ## Features
 
-- **Customizable duration** – set any game length in minutes.  
-- **Increment support** – add per‑move time.  
-- **Two layout options** – horizontal and vertical clocks.  
-- **Theme selection** – Classic, Cream, Pastel (extendable).  
-- **Responsive design** – works on desktop and mobile browsers.  
-- **Zero‑install** – runs entirely in the browser; no backend required.  
+- Set player names, game duration, and increment  
+- Choose between horizontal and vertical board layouts  
+- Select from multiple visual themes (Classic, Cream, Pastel)  
+- Responsive design with Tailwind CSS  
+- Fully client‑side; no backend required  
 
 ## Development
 
-- **Linting**: `npm run lint`  
-- **Type checking**: handled by TypeScript during build.  
-- **Hot reloading**: enabled by `npm run dev`.  
-
-To contribute a new feature or fix a bug, follow the steps in the *Contributing* section.
+- **Linting**: `npm run lint` (uses ESLint with Next.js preset)  
+- **Type‑checking**: Integrated via the TypeScript compiler (`tsc --noEmit`)  
+- **Hot Reload**: Enabled by default in development mode (`next dev`)  
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! To get started:
 
-1. Fork the repository.  
-2. Create a new branch for your change.  
+1. Fork the repository  
+2. Create a feature branch (`git checkout -b feature/your-feature`)  
+3. Commit your changes with clear messages  
+4. Open a pull request against the `main` branch  
 
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-
-3. Make your changes and ensure the project still builds.  
-4. Run linting to keep code style consistent.  
-
-   ```bash
-   npm run lint
-   ```
-
-5. Commit your changes with a clear message and push to your fork.  
-6. Open a Pull Request describing the changes.
-
-Please respect the existing code style and include tests if applicable.
+Please ensure that linting and TypeScript checks pass before submitting a PR.
 
 ## License
 
-This project does not include a license file. If you intend to use or distribute the code, consider adding an appropriate open‑source license (e.g., MIT) to the repository.
+No license has been specified for this project.
 
 ## FAQ
 
-**Q: Can I host the app on a static site provider?**  
-A: Yes. After building (`npm run build`), the output in the `.next` directory can be served by platforms that support Node.js, such as Vercel or Netlify.
+**Q:** Do I need a backend server?  
+**A:** No. The timer runs entirely in the browser.
 
-**Q: How do I add a new visual theme?**  
-A: Extend the `themes` array in `app/page.tsx` with a new object containing an `id`, `name`, and `colors`. Update the UI to handle the new theme.
+**Q:** Can I customize the themes further?  
+**A:** Yes. Themes are defined in the component state and can be extended by editing the `themes` array in `app/page.tsx`.
 
-**Q: Is the timer accurate for competitive play?**  
-A: The timer relies on the browser’s JavaScript timers, which are suitable for casual play but may not meet the strict timing requirements of official tournaments.
+---
+
+---
+
+<div align="center">
+  <sub>README generated by <a href="https://gitfriend.dev">Git Friend</a> ✨</sub>
+</div>
