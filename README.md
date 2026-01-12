@@ -10,17 +10,18 @@ A minimal, customizable online chess clock built with **Next.js**, **React**, **
 
 ## Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) (v16)
-- **Language**: TypeScript
-- **UI**: React 19, Tailwind CSS 3
-- **Icons**: lucide‑react
-- **Build Tools**: Turbopack (via `next dev`), ESLint, PostCSS
+- **Framework**: [Next.js](https://nextjs.org/) (v16)  
+- **Language**: TypeScript  
+- **UI Library**: React 19  
+- **Styling**: Tailwind CSS 3  
+- **Icons**: lucide‑react  
+- **Build Tools**: Turbopack (via `next dev`), ESLint, PostCSS  
 
 ## Prerequisites / Requirements
 
-- **Node.js** (>= 18)
-- **npm** (or `pnpm` / `yarn`)  
-- Internet connection for fetching dependencies
+- **Node.js** (>= 18)  
+- **npm**, **pnpm**, or **yarn**  
+- Internet connection for fetching dependencies  
 
 ## Installation
 
@@ -42,33 +43,38 @@ A minimal, customizable online chess clock built with **Next.js**, **React**, **
    npm install
    ```
 
+   *(or `pnpm install` / `yarn install`)*  
+
+4. Run the development server  
+
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
 ## Configuration
 
-The project uses the default Next.js configuration. If you need to customize Tailwind, edit `tailwind.config.js`. Environment variables are not required for the basic setup.
+The timer does not require additional configuration files. All settings (players, duration, increment, theme, layout) are selected through the web UI before starting a game.
+
+If you need to customize Tailwind or Next.js settings, edit the following files:
+
+- `tailwind.config.js` – Tailwind configuration  
+- `next.config.js` – Next.js configuration  
 
 ## Usage
 
-### Development server
+1. Open `http://localhost:3000` in a browser.  
+2. Enter player names, choose a theme, set the total time and increment, and select a layout (horizontal or vertical).  
+3. Click **Start** – the app navigates to the timer page and begins counting down.  
+4. Tap a player's clock to switch turns. The timer stops automatically when a player's time reaches zero.
 
-```bash
-npm run dev
-```
-
-Open <http://localhost:3000> in your browser. The UI allows you to:
-
-- Set player names
-- Choose a theme (Classic, Cream, Pastel)
-- Define game duration and increment
-- Select layout (horizontal or vertical)
-
-### Production build
+For production deployment, build the app and serve it with a Node.js server:
 
 ```bash
 npm run build
 npm start
 ```
-
-The app will be served on the port defined by `process.env.PORT` (default **3000**).
 
 ## Project Structure
 
@@ -76,70 +82,74 @@ The app will be served on the port defined by `process.env.PORT` (default **3000
 Chess-Timer/
 ├─ app/
 │  ├─ components/          # Reusable UI components (e.g., CustomDropdown)
-│  ├─ layout.tsx           # Root layout with global styles and metadata
-│  ├─ page.tsx             # Home page – configuration UI
-│  ├─ timer/
-│  │  ├─ horizontalLayout/
-│  │  │  └─ page.tsx       # Horizontal timer implementation
-│  │  └─ verticalLayout/
-│  │     └─ page.tsx       # Vertical timer implementation
-│  └─ globals.css          # Tailwind base + custom styles
+│  ├─ layout.tsx           # Root layout with metadata
+│  ├─ page.tsx             # Home page (settings UI)
+│  └─ timer/
+│     ├─ horizontalLayout/
+│     │  └─ page.tsx       # Horizontal timer implementation
+│     └─ verticalLayout/
+│        └─ page.tsx       # Vertical timer implementation
 ├─ public/
 │  ├─ chess-clock.svg      # Favicon
-│  └─ sound/
-│     └─ beep.mp3          # Timeout sound
-├─ next.config.js          # Next.js configuration (default)
+│  └─ og.png               # Open Graph image
+├─ styles/
+│  └─ globals.css          # Tailwind base and custom styles
+├─ tsconfig.json
 ├─ package.json
-├─ tailwind.config.js
-└─ tsconfig.json
+└─ README.md
 ```
 
 ## Features
 
-- **Customizable themes** – Classic, Cream, Pastel
-- **Two layout modes** – Horizontal and vertical
-- **Adjustable duration & increment**
-- **Responsive design** – works on desktop and mobile browsers
-- **Audio cue** on time expiration
-- **URL‑based settings** – share a game configuration via query string
+- **Customizable duration** – set any game length in minutes.  
+- **Increment support** – add per‑move time.  
+- **Two layout options** – horizontal and vertical clocks.  
+- **Theme selection** – Classic, Cream, Pastel (extendable).  
+- **Responsive design** – works on desktop and mobile browsers.  
+- **Zero‑install** – runs entirely in the browser; no backend required.  
 
 ## Development
 
-- **Linting**  
+- **Linting**: `npm run lint`  
+- **Type checking**: handled by TypeScript during build.  
+- **Hot reloading**: enabled by `npm run dev`.  
 
-  ```bash
-  npm run lint
-  ```
-
-- **Type checking** (via `tsc`) is handled automatically by Next.js during development and build.
-
-- **Styling** – Tailwind classes are used throughout; modify `globals.css` for global overrides.
+To contribute a new feature or fix a bug, follow the steps in the *Contributing* section.
 
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes with clear messages.
-4. Open a pull request against the `main` branch.
-5. Ensure linting passes (`npm run lint`) before submitting.
+1. Fork the repository.  
+2. Create a new branch for your change.  
 
-For major changes, open an issue first to discuss the proposed modification.
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+3. Make your changes and ensure the project still builds.  
+4. Run linting to keep code style consistent.  
+
+   ```bash
+   npm run lint
+   ```
+
+5. Commit your changes with a clear message and push to your fork.  
+6. Open a Pull Request describing the changes.
+
+Please respect the existing code style and include tests if applicable.
 
 ## License
 
-No license file is present in this repository. The code is provided **as‑is** without any explicit licensing terms.
+This project does not include a license file. If you intend to use or distribute the code, consider adding an appropriate open‑source license (e.g., MIT) to the repository.
 
 ## FAQ
 
-**Q: Can I host the app on a custom domain?**  
-A: Yes. After building the project, deploy the `out` (or the generated server) folder to any Node‑compatible hosting provider and configure your domain accordingly.
+**Q: Can I host the app on a static site provider?**  
+A: Yes. After building (`npm run build`), the output in the `.next` directory can be served by platforms that support Node.js, such as Vercel or Netlify.
 
-**Q: Does the timer work offline?**  
-A: Once the site is loaded, it runs entirely in the browser and does not require an internet connection for the timer functionality.
+**Q: How do I add a new visual theme?**  
+A: Extend the `themes` array in `app/page.tsx` with a new object containing an `id`, `name`, and `colors`. Update the UI to handle the new theme.
 
-**Q: How do I add a new theme?**  
-A: Add a new entry to the `themes` array in `app/page.tsx` and define corresponding colors in Tailwind or custom CSS.  
-
----
+**Q: Is the timer accurate for competitive play?**  
+A: The timer relies on the browser’s JavaScript timers, which are suitable for casual play but may not meet the strict timing requirements of official tournaments.
