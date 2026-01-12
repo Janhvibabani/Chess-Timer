@@ -19,102 +19,119 @@ A minimal, customizable online chess clock built with **Next.js**, **React**, **
 
 ## Prerequisites / Requirements
 
-- **Node.js** (>= 18)  
+- **Node.js** (>= 18)  
 - **npm**, **pnpm**, or **yarn**  
 - Internet connection for fetching dependencies  
 
 ## Installation
 
-1. Clone the repository  
+```bash
+# Clone the repository
+git clone https://github.com/Janhvibabani/Chess-Timer.git
+cd Chess-Timer
 
-   ```bash
-   git clone https://github.com/Janhvibabani/Chess-Timer.git
-   ```
-
-2. Navigate to the project directory  
-
-   ```bash
-   cd Chess-Timer
-   ```
-
-3. Install dependencies  
-
-   ```bash
-   npm install
-   ```
-
-   *(or `pnpm install` / `yarn install` if you prefer a different package manager)*  
+# Install dependencies (choose your package manager)
+npm install
+# or
+pnpm install
+# or
+yarn install
+```
 
 ## Configuration
 
-No additional configuration or environment variables are required. The application runs with the default settings out of the box.
+The project uses the default Next.js configuration. If you need to customize Tailwind, edit `tailwind.config.js`. Environment variables are not required for the core functionality.
 
 ## Usage
 
-Start the development server:
-
 ```bash
+# Start the development server
 npm run dev
+# or
+pnpm dev
+# or
+yarn dev
 ```
 
-Open your browser and visit `http://localhost:3000` to access the chess timer.
-
-You can also build and run the production version:
+Open `http://localhost:3000` in a browser to view the timer.
 
 ```bash
+# Build for production
 npm run build
+# or
+pnpm build
+# or
+yarn build
+```
+
+```bash
+# Start the production server
 npm start
+# or
+pnpm start
+# or
+yarn start
 ```
 
 ## Project Structure
 
-- `app/` – Main application code (pages, components, layout)  
-  - `components/` – Reusable UI components (e.g., `CustomDropdown.tsx`)  
-  - `page.tsx` – Home page containing the timer setup UI  
-  - `layout.tsx` – Root layout for the Next.js app  
-- `public/` – Static assets (fonts, images)  
-- `styles/` or `globals.css` – Global Tailwind CSS configuration  
-- `package.json` – Project metadata and scripts  
-- `tsconfig.json` – TypeScript compiler options  
+| Path                     | Description                                    |
+|--------------------------|------------------------------------------------|
+| `app/`                   | Next.js app router components                  |
+| `app/components/`        | Reusable React components (e.g., dropdown)    |
+| `app/layout.tsx`         | Global layout and metadata                     |
+| `app/page.tsx`           | Main page implementation                       |
+| `public/`                | Static assets (icons, images)                 |
+| `styles/` or `globals.css`| Global Tailwind CSS imports                    |
+| `tsconfig.json`          | TypeScript compiler options                    |
+| `package.json`           | Scripts, dependencies, and project metadata    |
 
 ## Features
 
-- Set player names, game duration, and increment  
-- Choose between horizontal and vertical board layouts  
-- Select from multiple visual themes (Classic, Cream, Pastel)  
-- Responsive design with Tailwind CSS  
+- Adjustable total time and increment per move  
+- Horizontal and vertical layout options  
+- Multiple visual themes (dark / light)  
+- Responsive design for desktop and mobile browsers  
 - Fully client‑side; no backend required  
 
 ## Development
 
-- **Linting**: `npm run lint` (uses ESLint with Next.js preset)  
-- **Type‑checking**: Integrated via the TypeScript compiler (`tsc --noEmit`)  
-- **Hot Reload**: Enabled by default in development mode (`next dev`)  
+```bash
+# Run ESLint
+npm run lint
+# or
+pnpm lint
+# or
+yarn lint
+```
+
+The project is set up with strict TypeScript settings and ESLint rules from `eslint-config-next`.
 
 ## Contributing
 
-Contributions are welcome! To get started:
+Contributions are welcome! Please follow these steps:
 
-1. Fork the repository  
-2. Create a feature branch (`git checkout -b feature/your-feature`)  
-3. Commit your changes with clear messages  
-4. Open a pull request against the `main` branch  
+1. Fork the repository.  
+2. Create a feature branch (`git checkout -b feature/your-feature`).  
+3. Commit your changes with clear messages.  
+4. Open a pull request describing the changes.
 
-Please ensure that linting and TypeScript checks pass before submitting a PR.
+Make sure linting passes before submitting.
 
 ## License
 
-No license has been specified for this project.
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
 
 ## FAQ
 
-**Q:** Do I need a backend server?  
-**A:** No. The timer runs entirely in the browser.
+**Q: Can I use this timer offline?**  
+A: Yes. After the initial load, all assets are cached by the browser, allowing offline use.
 
-**Q:** Can I customize the themes further?  
-**A:** Yes. Themes are defined in the component state and can be extended by editing the `themes` array in `app/page.tsx`.
+**Q: How do I change the theme colors?**  
+A: Edit the Tailwind configuration in `tailwind.config.js` or modify the CSS classes in the component files.
 
----
+**Q: Is there support for chess variants (e.g., blitz, rapid)?**  
+A: The timer’s duration and increment are fully configurable, so you can set any time control you need.
 
 ---
 
